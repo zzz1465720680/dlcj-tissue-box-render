@@ -1,0 +1,51 @@
+PASS English homepage UI 
+PASS Every homepage studio link carries English ['/customize?lang=en', '/customize?lang=en', '/customize?lang=en', '/customize?preset=porcelain-blue&lang=en', '/customi
+PASS All original preset thumbnails loaded 
+PASS Homepage does not load 3D runtime or model 
+PASS Homepage fits 320px 
+PASS Homepage fits 360px 
+PASS Homepage fits 390px 
+PASS Homepage fits 430px 
+PASS Homepage fits 768px 
+PASS Homepage fits 1024px 
+PASS Homepage fits 1440px 
+PASS Product details expand on demand 
+PASS Entire initial studio UI English 
+PASS Studio fits 320px 
+PASS All three presets visible in first screen at 320px 
+PASS Studio fits 360px 
+PASS All three presets visible in first screen at 360px 
+PASS Studio fits 390px 
+PASS All three presets visible in first screen at 390px 
+PASS Studio fits 430px 
+PASS All three presets visible in first screen at 430px 
+PASS Studio fits 768px 
+PASS Studio fits 1024px 
+PASS Studio fits 1440px 
+PASS Second card applies original black/coral design 
+PASS Replacing an edited/preset design asks confirmation 
+PASS Third card applies original forest/linen side label 
+PASS Preset replacement can be undone 
+PASS English preset name in editable save field 
+PASS Empty design name cannot be saved 
+PASS Cancelling empty name preserves existing design 
+PASS Named design stored through original IDB code with test backend 
+PASS Saved library lists named design 
+PASS Library reopen restores the current design 
+PASS User authored Chinese/English text is preserved 
+PASS Consultation contacts and fields use English 
+PASS Invalid quantity disables enquiry copy 
+PASS Valid quantity enables enquiry copy 
+PASS Clipboard unavailable exposes manual-copy textbox 
+PASS Manual-copy text retains custom artwork and quantity 
+PASS Notes survive closing and reopening enquiry 
+PASS Back saves latest draft and targets English homepage 
+PASS Language switch preserves route and light-preview flag 
+PASS Direct preset deep link applies real design 
+PASS Consumed preset removed from URL to prevent reapplying on refresh 
+PASS Storage failure opens export/leave guard 
+PASS Storage failure does not trap user on page 
+PASS Unavailable WebGL shows localized fallback 
+PASS Camera controls are disabled without a model 
+PASS PNG export disabled but JSON remains available without 3D 
+PASS No uncaught JavaScript errors in tested application flows []

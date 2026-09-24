@@ -1,0 +1,225 @@
+{
+  "comparison": "Exact uploaded 2026-09-24 repository ZIP vs delivered source",
+  "expected_changed": [
+    "public/_redirects"
+  ],
+  "files": [
+    {
+      "path": "lib/design.ts",
+      "original_sha256": "a6409da4f46e423dc597ae56c62dedcf5bded4674db5c99d61e853c6726ea4c0",
+      "delivered_sha256": "a6409da4f46e423dc597ae56c62dedcf5bded4674db5c99d61e853c6726ea4c0",
+      "unchanged": true,
+      "bytes": 2884
+    },
+    {
+      "path": "lib/merchant-config.ts",
+      "original_sha256": "83901fec3ce84721b6f84b17bbeb427dada515b75962df1445cbdaa5a018dd06",
+      "delivered_sha256": "83901fec3ce84721b6f84b17bbeb427dada515b75962df1445cbdaa5a018dd06",
+      "unchanged": true,
+      "bytes": 4125
+    },
+    {
+      "path": "lib/schema.ts",
+      "original_sha256": "a39b003c422dfa21e1f1ac915f260442c1320e17cdb601115a1d0f1cb7ce7341",
+      "delivered_sha256": "a39b003c422dfa21e1f1ac915f260442c1320e17cdb601115a1d0f1cb7ce7341",
+      "unchanged": true,
+      "bytes": 1080
+    },
+    {
+      "path": "package-lock.json",
+      "original_sha256": "c86c2acd21c7db60d915025f410948b74a715b6360e959d19f5bf09004e0395c",
+      "delivered_sha256": "c86c2acd21c7db60d915025f410948b74a715b6360e959d19f5bf09004e0395c",
+      "unchanged": true,
+      "bytes": 134334
+    },
+    {
+      "path": "public/_redirects",
+      "original_sha256": "9cb4a2fc4e8ed7f5db0b969a99d9fea93408bb15497762ba04e9a005a1221537",
+      "delivered_sha256": "6036983e5fc00f0169c9e939b1816ed771eee00e27f2fcc517b819041460b9ef",
+      "unchanged": false,
+      "bytes": 19
+    },
+    {
+      "path": "public/brand/README.md",
+      "original_sha256": "f4cb23c7d4f8ef4988b486d03c90d479c887c782ebc243590f2dc1e76bb9a7ff",
+      "delivered_sha256": "f4cb23c7d4f8ef4988b486d03c90d479c887c782ebc243590f2dc1e76bb9a7ff",
+      "unchanged": true,
+      "bytes": 399
+    },
+    {
+      "path": "public/brand/dc-logo.svg",
+      "original_sha256": "c0df6612d33a7fd43dc820acb3e982a0265334baa88a37a4251298bb5b68f7ab",
+      "delivered_sha256": "c0df6612d33a7fd43dc820acb3e982a0265334baa88a37a4251298bb5b68f7ab",
+      "unchanged": true,
+      "bytes": 457185
+    },
+    {
+      "path": "public/brand/dc-mark-source.png",
+      "original_sha256": "db3fe10cc46c99021049984914b49374a271e26bdfc3473400ca3e37e2a96ac4",
+      "delivered_sha256": "db3fe10cc46c99021049984914b49374a271e26bdfc3473400ca3e37e2a96ac4",
+      "unchanged": true,
+      "bytes": 342533
+    },
+    {
+      "path": "public/models/leather-normal.png",
+      "original_sha256": "889e4848f2d58b9e8e04e37b9134004926f48bb528c9f22e8ad120082730cec4",
+      "delivered_sha256": "889e4848f2d58b9e8e04e37b9134004926f48bb528c9f22e8ad120082730cec4",
+      "unchanged": true,
+      "bytes": 7137183
+    },
+    {
+      "path": "public/models/leather-roughness.png",
+      "original_sha256": "1dd3ef604a5ae747877d468100dc35522b4b3605879aab279e2c959c80b6224d",
+      "delivered_sha256": "1dd3ef604a5ae747877d468100dc35522b4b3605879aab279e2c959c80b6224d",
+      "unchanged": true,
+      "bytes": 1467249
+    },
+    {
+      "path": "public/models/perforation-mask.png",
+      "original_sha256": "f742532690c7976b8023ce9f8534ee22a076f569aa02f6ae600eb62f9f0e17a7",
+      "delivered_sha256": "f742532690c7976b8023ce9f8534ee22a076f569aa02f6ae600eb62f9f0e17a7",
+      "unchanged": true,
+      "bytes": 12965
+    },
+    {
+      "path": "public/models/perforation-rim.png",
+      "original_sha256": "f38a85706dd52dc273bca3cbc6fdccd3e2485fbbbdd0ecc3e7cef830e470ba9d",
+      "delivered_sha256": "f38a85706dd52dc273bca3cbc6fdccd3e2485fbbbdd0ecc3e7cef830e470ba9d",
+      "unchanged": true,
+      "bytes": 43492
+    },
+    {
+      "path": "public/models/revision7/tissuebox-r7.glb",
+      "original_sha256": "5d4ea839d591c541be6fd064750b16188f5da94161d25aecd083330867c711f1",
+      "delivered_sha256": "5d4ea839d591c541be6fd064750b16188f5da94161d25aecd083330867c711f1",
+      "unchanged": true,
+      "bytes": 18231240
+    },
+    {
+      "path": "public/presets/black-coral.webp",
+      "original_sha256": "c2271c4309524582ac01b4ef4dd132cce9edc1c1522cc313aff2928dab29490f",
+      "delivered_sha256": "c2271c4309524582ac01b4ef4dd132cce9edc1c1522cc313aff2928dab29490f",
+      "unchanged": true,
+      "bytes": 7176
+    },
+    {
+      "path": "public/presets/forest-linen.webp",
+      "original_sha256": "9b4d585bbdc7f626493e89c9400d8d1ed71d271cc2728987bb36169a5330e2f3",
+      "delivered_sha256": "9b4d585bbdc7f626493e89c9400d8d1ed71d271cc2728987bb36169a5330e2f3",
+      "unchanged": true,
+      "bytes": 10006
+    },
+    {
+      "path": "public/presets/porcelain-blue.webp",
+      "original_sha256": "fd345bfe48e1dc9885f8d3a673931f89f8ec0f86a3a0d2091620f4555d4f7f0c",
+      "delivered_sha256": "fd345bfe48e1dc9885f8d3a673931f89f8ec0f86a3a0d2091620f4555d4f7f0c",
+      "unchanged": true,
+      "bytes": 8328
+    },
+    {
+      "path": "public/references/black.jpg",
+      "original_sha256": "f496cf4cca0199d8100b27570d302d0e3524ac32d6083357acd36e0f56ac4cd6",
+      "delivered_sha256": "f496cf4cca0199d8100b27570d302d0e3524ac32d6083357acd36e0f56ac4cd6",
+      "unchanged": true,
+      "bytes": 2284547
+    },
+    {
+      "path": "public/references/blue.jpg",
+      "original_sha256": "6e86f34174ef177e218509af9385b4292acb643c185d86ad1ae7bd29ea58bd1f",
+      "delivered_sha256": "6e86f34174ef177e218509af9385b4292acb643c185d86ad1ae7bd29ea58bd1f",
+      "unchanged": true,
+      "bytes": 2627200
+    },
+    {
+      "path": "public/references/detail-reference.jpg",
+      "original_sha256": "bfd5a8b46cec959ae4679228bdab96fa02cf7dd212e2a0257e9cccaed4ad8952",
+      "delivered_sha256": "bfd5a8b46cec959ae4679228bdab96fa02cf7dd212e2a0257e9cccaed4ad8952",
+      "unchanged": true,
+      "bytes": 2847721
+    },
+    {
+      "path": "public/references/end-reference.jpg",
+      "original_sha256": "453206728b49a05ff3c2e425a23cc0f3aa8bf50922b44494b3b40da753a2fc8b",
+      "delivered_sha256": "453206728b49a05ff3c2e425a23cc0f3aa8bf50922b44494b3b40da753a2fc8b",
+      "unchanged": true,
+      "bytes": 2249218
+    },
+    {
+      "path": "public/references/pattern.jpg",
+      "original_sha256": "0842146761391753ac45c7c81b0fc304b56ee05bed8b0017a801a37e4fae4a3e",
+      "delivered_sha256": "0842146761391753ac45c7c81b0fc304b56ee05bed8b0017a801a37e4fae4a3e",
+      "unchanged": true,
+      "bytes": 2860212
+    },
+    {
+      "path": "public/references/white.jpg",
+      "original_sha256": "5d3476bf29594f6a96716b3659178644ddd95972ceb1a9885e4ecd87acc06890",
+      "delivered_sha256": "5d3476bf29594f6a96716b3659178644ddd95972ceb1a9885e4ecd87acc06890",
+      "unchanged": true,
+      "bytes": 2346891
+    },
+    {
+      "path": "public/showcase/ASSETS.md",
+      "original_sha256": "e840a8b4885fe01cbc0251ee27cc421c87c035d7cffe5bba3d3e7fb8b136ce97",
+      "delivered_sha256": "e840a8b4885fe01cbc0251ee27cc421c87c035d7cffe5bba3d3e7fb8b136ce97",
+      "unchanged": true,
+      "bytes": 787
+    },
+    {
+      "path": "public/showcase/car-scene-600.webp",
+      "original_sha256": "29e65b7882b0b6e40bc41efa2d1000f6ac2717b2eefc126b7289cba5d6311097",
+      "delivered_sha256": "29e65b7882b0b6e40bc41efa2d1000f6ac2717b2eefc126b7289cba5d6311097",
+      "unchanged": true,
+      "bytes": 53648
+    },
+    {
+      "path": "public/showcase/car-scene-941.webp",
+      "original_sha256": "fe68deab81260fd66049e8be8d5ac60538295f8c326a3e68ff6494eaf77cb66c",
+      "delivered_sha256": "fe68deab81260fd66049e8be8d5ac60538295f8c326a3e68ff6494eaf77cb66c",
+      "unchanged": true,
+      "bytes": 105940
+    },
+    {
+      "path": "public/showcase/craft-detail-1086.webp",
+      "original_sha256": "a51e9c6fe58a35e2717827917bf1fa89040a16ba184bfa889bdb640475dcbdd2",
+      "delivered_sha256": "a51e9c6fe58a35e2717827917bf1fa89040a16ba184bfa889bdb640475dcbdd2",
+      "unchanged": true,
+      "bytes": 143400
+    },
+    {
+      "path": "public/showcase/craft-detail-600.webp",
+      "original_sha256": "b92bdab1c19643744719f6ba4d119282887e7a09449ff38850d5c16020bc6091",
+      "delivered_sha256": "b92bdab1c19643744719f6ba4d119282887e7a09449ff38850d5c16020bc6091",
+      "unchanged": true,
+      "bytes": 69566
+    },
+    {
+      "path": "public/showcase/customize-collection-1672.webp",
+      "original_sha256": "ea722b842bd518bd156358f347a9b22b8d2be535a7652194a3b235497e59e39d",
+      "delivered_sha256": "ea722b842bd518bd156358f347a9b22b8d2be535a7652194a3b235497e59e39d",
+      "unchanged": true,
+      "bytes": 132432
+    },
+    {
+      "path": "public/showcase/customize-collection-840.webp",
+      "original_sha256": "0e8ec30a144dc83fae9849b6679039d3f5b03aa0e1a6218880c6c0e2b93ad2b7",
+      "delivered_sha256": "0e8ec30a144dc83fae9849b6679039d3f5b03aa0e1a6218880c6c0e2b93ad2b7",
+      "unchanged": true,
+      "bytes": 35688
+    },
+    {
+      "path": "public/showcase/hero-studio-1672.webp",
+      "original_sha256": "8870b3d4aa52238db315e828c52c97a9df398d311375ee441f545d1deb2b5843",
+      "delivered_sha256": "8870b3d4aa52238db315e828c52c97a9df398d311375ee441f545d1deb2b5843",
+      "unchanged": true,
+      "bytes": 93840
+    },
+    {
+      "path": "public/showcase/hero-studio-840.webp",
+      "original_sha256": "03a60bdc9779ea47a17449015239bb33c1234521ae6084602690bb52c2aa615d",
+      "delivered_sha256": "03a60bdc9779ea47a17449015239bb33c1234521ae6084602690bb52c2aa615d",
+      "unchanged": true,
+      "bytes": 26104
+    }
+  ]
+}

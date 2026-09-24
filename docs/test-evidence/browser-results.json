@@ -1,0 +1,262 @@
+{
+  "mode": "Chromium embedded document; simulated URL navigation + localStorage + IndexedDB backend. Original application modules and DOM run unchanged except browser-boundary substitution. WebGL unavailable.",
+  "passed": 51,
+  "total": 51,
+  "cases": [
+    {
+      "name": "English homepage UI",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Every homepage studio link carries English",
+      "passed": true,
+      "detail": "['/customize?lang=en', '/customize?lang=en', '/customize?lang=en', '/customize?preset=porcelain-blue&lang=en', '/customize?preset=black-coral&lang=en', '/customize?preset=forest-linen&lang=en', '/customize?preview=light&lang=en', '/customize?lang=en', '/customize?lang=en']"
+    },
+    {
+      "name": "All original preset thumbnails loaded",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Homepage does not load 3D runtime or model",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Homepage fits 320px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Homepage fits 360px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Homepage fits 390px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Homepage fits 430px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Homepage fits 768px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Homepage fits 1024px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Homepage fits 1440px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Product details expand on demand",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Entire initial studio UI English",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Studio fits 320px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All three presets visible in first screen at 320px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Studio fits 360px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All three presets visible in first screen at 360px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Studio fits 390px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All three presets visible in first screen at 390px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Studio fits 430px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "All three presets visible in first screen at 430px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Studio fits 768px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Studio fits 1024px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Studio fits 1440px",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Second card applies original black/coral design",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Replacing an edited/preset design asks confirmation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Third card applies original forest/linen side label",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Preset replacement can be undone",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "English preset name in editable save field",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Empty design name cannot be saved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Cancelling empty name preserves existing design",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Named design stored through original IDB code with test backend",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Saved library lists named design",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Library reopen restores the current design",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "User authored Chinese/English text is preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Consultation contacts and fields use English",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Invalid quantity disables enquiry copy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Valid quantity enables enquiry copy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Clipboard unavailable exposes manual-copy textbox",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Manual-copy text retains custom artwork and quantity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Notes survive closing and reopening enquiry",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Back saves latest draft and targets English homepage",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Language switch preserves route and light-preview flag",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Direct preset deep link applies real design",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Consumed preset removed from URL to prevent reapplying on refresh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Storage failure opens export/leave guard",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Storage failure does not trap user on page",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Unavailable WebGL shows localized fallback",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "Camera controls are disabled without a model",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "PNG export disabled but JSON remains available without 3D",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "No uncaught JavaScript errors in tested application flows",
+      "passed": true,
+      "detail": "[]"
+    }
+  ]
+}

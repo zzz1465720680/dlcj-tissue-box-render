@@ -169,7 +169,7 @@ const zh: ShowcaseCopy = {
       {q: '一定要用 3D 吗？', a: '不用。3D 只是预览，并且是按需加载的。手机或网络不佳时，可以先选配色，再生成需求文字和方案文件（JSON），一样能完成咨询。'},
     ],
   },
-  languageNote: '本页与定制工坊均提供中文；工坊与方案摘要目前只有中文版本。',
+  languageNote: '首页、定制工坊与方案摘要均支持中英文。',
   poster: {
     label: '进入定制工坊，设计你的纸巾盒',
     imageAlt: '白色主体搭配清新绿、晴空蓝、暖杏橙包边的三款纸巾盒',
@@ -205,7 +205,7 @@ const zh: ShowcaseCopy = {
 
 const en: ShowcaseCopy = {
   meta: {
-    title: '鼎立车眷 · Car Tissue Box',
+    title: 'DINGLI · Car Tissue Box',
     description: 'Small things, made with care. The White Contrast Series car tissue box: pick a colourway or customize material, colour, perforation and pattern, then export a plan to confirm with the maker.',
   },
   skipLink: 'Skip to the collection',
@@ -294,7 +294,7 @@ const en: ShowcaseCopy = {
       {q: 'Do I have to use the 3D view?', a: 'No. 3D is only a preview and loads on demand. On a phone or a slow connection you can pick a colourway first and then generate the request text and plan file (JSON) — that is enough to start the conversation.'},
     ],
   },
-  languageNote: 'This page is available in English and Chinese. The customization studio and the request summary are currently in Chinese only.',
+  languageNote: 'The homepage, customization studio and enquiry summary are available in English and Chinese.',
   poster: {
     label: 'Open the customization studio and design your tissue box',
     imageAlt: 'Three tissue boxes with white bodies and fresh green, sky blue and warm apricot corners',

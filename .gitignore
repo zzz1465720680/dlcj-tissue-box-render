@@ -3,3 +3,7 @@ dist/
 .qa/
 .env*
 *.tsbuildinfo
+
+test-results/
+__pycache__/
+.netlify/

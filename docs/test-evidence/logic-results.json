@@ -1,0 +1,127 @@
+{
+  "mode": "unit tests; mocked URL/localStorage",
+  "passed": 30,
+  "total": 30,
+  "cases": [
+    {
+      "name": "explicit English URL wins over Chinese storage",
+      "passed": true
+    },
+    {
+      "name": "stored language survives a URL without lang",
+      "passed": true
+    },
+    {
+      "name": "invalid language falls back to preference",
+      "passed": true
+    },
+    {
+      "name": "blocked localStorage is safe",
+      "passed": true
+    },
+    {
+      "name": "language links retain preset, preview and fragment",
+      "passed": true
+    },
+    {
+      "name": "all original preset names translate for display",
+      "passed": true
+    },
+    {
+      "name": "user authored name is not translated",
+      "passed": true
+    },
+    {
+      "name": "user text substitutions are not reinterpreted",
+      "passed": true
+    },
+    {
+      "name": "quantity rejects \"\"",
+      "passed": true
+    },
+    {
+      "name": "quantity rejects \"0\"",
+      "passed": true
+    },
+    {
+      "name": "quantity rejects \"-1\"",
+      "passed": true
+    },
+    {
+      "name": "quantity rejects \"1.5\"",
+      "passed": true
+    },
+    {
+      "name": "quantity rejects \"1e2\"",
+      "passed": true
+    },
+    {
+      "name": "quantity rejects \"Infinity\"",
+      "passed": true
+    },
+    {
+      "name": "quantity rejects \"1000\"",
+      "passed": true
+    },
+    {
+      "name": "quantity rejects \"NaN\"",
+      "passed": true
+    },
+    {
+      "name": "quantity accepts 1",
+      "passed": true
+    },
+    {
+      "name": "quantity accepts 999",
+      "passed": true
+    },
+    {
+      "name": "quantity accepts  24 ",
+      "passed": true
+    },
+    {
+      "name": "preset 2 retains original black/coral materials",
+      "passed": true
+    },
+    {
+      "name": "preset 3 retains green/linen and side label",
+      "passed": true
+    },
+    {
+      "name": "clone does not mutate original preset",
+      "passed": true
+    },
+    {
+      "name": "summary covers all six individual parts in English",
+      "passed": true
+    },
+    {
+      "name": "enquiry text is English, with no false order confirmation",
+      "passed": true
+    },
+    {
+      "name": "JSON keeps exact original design including user artwork",
+      "passed": true
+    },
+    {
+      "name": "invalid export quantity is rejected",
+      "passed": true
+    },
+    {
+      "name": "overlong notes are rejected",
+      "passed": true
+    },
+    {
+      "name": "design change changes signature",
+      "passed": true
+    },
+    {
+      "name": "quantity and note changes invalidate copied enquiry",
+      "passed": true
+    },
+    {
+      "name": "all UI files parse; all literal translation keys exist",
+      "passed": true
+    }
+  ]
+}

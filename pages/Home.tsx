@@ -1,241 +1,94 @@
-import { ArrowUpRight, ChevronRight, Check, MessageSquare } from 'lucide-react';
-import { SHOWCASE_COPY, resolveLang, type Lang } from '@/lib/showcase-copy';
-import { merchantFacts } from '@/lib/merchant-config';
+import {useEffect, useState} from 'react';
+import {ArrowUpRight, ChevronRight, Check} from '@/components/site-icons';
+import {SHOWCASE_COPY} from '@/lib/showcase-copy';
+import {getLang, localizedHref, languageHref} from '@/lib/i18n';
+import {merchantFacts} from '@/lib/merchant-config';
 import ContactOptions from '@/components/contact-options';
 
-function Lines({ lines }: { lines: readonly string[] }) {
-  return (
-    <>
-      {lines.map((line, index) => (
-        <span key={line}>{index > 0 && <br />}{line}</span>
-      ))}
-    </>
-  );
-}
-
-function LangToggle({ lang }: { lang: Lang }) {
-  const copy = SHOWCASE_COPY[lang].langToggle;
-  return (
-    <div className="sc-lang" role="group" aria-label={copy.label}>
-      <a href="/" aria-current={lang === 'zh' ? 'true' : undefined} hrefLang="zh-CN">
-        {copy.zh}
-      </a>
-      <a href="/?lang=en" aria-current={lang === 'en' ? 'true' : undefined} hrefLang="en">
-        {copy.en}
-      </a>
-    </div>
-  );
-}
-
 export default function Home() {
-  const lang = resolveLang(new URLSearchParams(window.location.search).get('lang'));
-  const copy = SHOWCASE_COPY[lang];
-  const facts = merchantFacts(lang);
+  const lang = getLang(), en = lang === 'en', copy = SHOWCASE_COPY[lang], facts = merchantFacts(lang);
+  const [active, setActive] = useState('collection');
+  const nav = [
+    ['collection', en ? 'Collection' : '产品'], ['colorways', en ? 'Colourways' : '配色'],
+    ['details', en ? 'Details' : '细节'], ['how-to-buy', en ? 'How it works' : '流程'],
+  ];
+  useEffect(() => {
+    if (!('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver(entries => {
+      for (const entry of entries) if (entry.isIntersecting) setActive(entry.target.id);
+    }, {rootMargin: '-15% 0px -55% 0px', threshold: 0});
+    nav.forEach(([id]) => { const element = document.getElementById(id); if (element) observer.observe(element); });
+    return () => observer.disconnect();
+  }, []);
+  const studio = localizedHref('/customize');
+  const steps = en ? [
+    ['Choose a starting point', 'Begin with a colourway, then make it yours.'],
+    ['Refine the details', 'Adjust materials, colours, stitching and artwork in the studio.'],
+    ['Review & ask the maker', 'Export your design and send it for a quote. Confirm before purchasing.'],
+  ] : [
+    ['先选喜欢的配色', '从三款推荐搭配开始，每个部位都能继续调整。'],
+    ['再打磨你的细节', '选择材质、封边与缝线，也可以加入自己的图案。'],
+    ['确认方案，联系商家', '把方案发给商家，确认材料、报价和交期后再购买。'],
+  ];
+  return <div className="landing" lang={en ? 'en' : 'zh-CN'}>
+    <a className="landing-skip" href="#collection">{copy.skipLink}</a>
+    <header className="landing-header">
+      <div className="landing-nav shell">
+        <a href={localizedHref('/')} className="landing-brand" aria-label={en ? 'Dingli home' : '鼎立车眷首页'}>
+          <img src="/brand/dc-logo.svg" width="40" height="36" alt="DC"/>
+          <span>{en ? 'DINGLI' : '鼎立车眷'}<small>THE PERSONAL COLLECTION</small></span>
+        </a>
+        <nav className="landing-links" aria-label={copy.navLabel}>{nav.map(([id, name]) => <a key={id} href={'#'+id} onClick={() => setActive(id)} aria-current={active === id ? 'location' : undefined}>{name}</a>)}</nav>
+        <div className="landing-nav-end">
+          <div className="language-switch" role="group" aria-label={copy.langToggle.label}>
+            <a href={languageHref('zh')} aria-current={!en ? 'true' : undefined} lang="zh-CN">中文</a>
+            <a href={languageHref('en')} aria-current={en ? 'true' : undefined} lang="en">EN</a>
+          </div>
+          <a className="landing-cta compact" href={studio}>{en ? 'Customize' : '开始定制'}<ArrowUpRight size={15}/></a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section id="collection" className="landing-hero shell" aria-labelledby="hero-title">
+        <div className="hero-editorial">
+          <p className="landing-kicker"><span/>{en ? 'CAR TISSUE BOX · MADE PERSONAL' : '车载纸巾盒 · 自由定制'}</p>
+          <h1 id="hero-title">{en ? <>Everyday objects.<br/><em>Your own way.</em></> : <>日常小物，<br/><em>也有你的模样。</em></>}</h1>
+          <p className="hero-intro">{en ? 'A colour you love. A detail that feels like you. Design a tissue box that belongs in your everyday.' : '喜欢的颜色，讲究的细节。\n从一款纸巾盒开始，把日常变成自己的样子。'}</p>
+          <div className="hero-cta-row"><a className="landing-cta" href={studio}>{en ? 'Design your tissue box' : '设计我的纸巾盒'}<ArrowUpRight size={18}/></a><a className="landing-text-link" href="#colorways">{en ? 'Explore colourways' : '先看看三款配色'}<ChevronRight size={17}/></a></div>
+          <div className="hero-proof"><span><Check size={14}/>{en ? 'No account needed' : '无需注册'}</span><span><Check size={14}/>{en ? 'Saved on your device' : '方案本机保存'}</span></div>
+        </div>
+        <figure className="hero-product">
+          <div className="hero-product-label"><span>01 / THE COLLECTION</span><span>{en ? 'STYLE REFERENCE' : '款式参考'}</span></div>
+          <img src="/showcase/hero-studio-1672.webp" srcSet="/showcase/hero-studio-840.webp 840w, /showcase/hero-studio-1672.webp 1672w" sizes="(max-width: 900px) 100vw, 60vw" width="1672" height="941" fetchPriority="high" alt={copy.collection.heroAlt}/>
+          <figcaption><span>{en ? 'A fresh accent. A quieter everyday.' : '一抹清新，恰到好处。'}</span><span className="hero-colour"><i/>{en ? 'Green accent' : '清新绿'}</span></figcaption>
+        </figure>
+      </section>
+      <div className="landing-path"><div className="shell">{steps.map(([title], i) => <a href={i === 0 ? '#colorways' : i === 1 ? studio : '#how-to-buy'} key={title}><span className="path-number">0{i+1}</span><span>{title}</span><ArrowUpRight size={16}/></a>)}</div></div>
 
-  return (
-    <div className="sc-showcase" lang={lang === 'en' ? 'en' : 'zh-CN'}>
-      <a className="sc-skipLink" href="#collection">{copy.skipLink}</a>
-      <header className="sc-header">
-        <nav className="sc-nav" aria-label={copy.navLabel}>
-          <a href="/" className="sc-logo" aria-label={copy.logoLabel}>
-            <img src="/brand/dc-logo.svg" alt="DC 商标" className="sc-dcLogo" width="40" height="36" />
-            <span>{copy.brand}</span>
-          </a>
-          <div className="sc-navLinks">
-            <a href="#collection" aria-current="page">{copy.nav.collection}</a>
-            <a href="#colorways">{copy.nav.colorways}</a>
-            <a href="#details">{copy.nav.details}</a>
-            <a href="#how-to-buy">{copy.nav.purchase}</a>
-          </div>
-          <div className="sc-navEnd">
-            <LangToggle lang={lang} />
-            <a href="/customize" className="sc-navCta">{copy.nav.cta} <ArrowUpRight size={14} /></a>
-          </div>
-        </nav>
-      </header>
-      <main>
-        <section id="collection" className="sc-collection" aria-labelledby="collection-title">
-          <div className="sc-titleRow">
-            <h1 id="collection-title">{copy.collection.title}</h1>
-            <p>{copy.collection.tagline}</p>
-          </div>
-          <div className="sc-collectionLabel">
-            <span className="sc-collectionName">{copy.collection.series}</span>
-            <span className="sc-colorDots" aria-label={copy.collection.seriesColors}><i /><i /><i /></span>
-            <span className="sc-collectionNote">{copy.collection.seriesNote}</span>
-          </div>
-          <article className="sc-hero">
-            <img className="sc-heroImage" src="/showcase/hero-studio-1672.webp" srcSet="/showcase/hero-studio-840.webp 840w, /showcase/hero-studio-1672.webp 1672w" sizes="(max-width: 600px) 115vw, (max-width: 1552px) 92vw, 1440px" alt={copy.collection.heroAlt} width="1672" height="941" fetchPriority="high" />
-            <div className="sc-heroTop">
-              <div>
-                <p className="sc-eyebrow">{copy.collection.eyebrow}</p>
-                <h2>{copy.collection.heroTitle}</h2>
-                <p className="sc-heroDescription">{copy.collection.heroDescription}</p>
-              </div>
-              <div className="sc-heroActions">
-                <a className="sc-button" href="#colorways">{copy.hero.start} <ChevronRight size={17} /></a>
-                <a className="sc-textLink" href="#how-to-buy">{copy.hero.how} <ChevronRight size={16} /></a>
-              </div>
-            </div>
-            <div className="sc-heroCaption"><span>{copy.collection.captionLeft}</span><span>{copy.collection.captionRight}</span></div>
-          </article>
-        </section>
+      <section id="colorways" className="landing-section shell" aria-labelledby="colour-title">
+        <div className="landing-section-title"><div><p className="landing-kicker">01 — {en ? 'FIND YOUR COLOUR' : '从配色开始'}</p><h2 id="colour-title">{en ? 'Three starting points.\nEndless personal touches.' : '先选一款喜欢的，\n其余的，慢慢定。'}</h2></div><p>{en ? 'Each colourway opens directly in the studio. Change any detail, or keep it just as it is.' : '点选即可带入定制工坊。\n每个部位都能改，也可以保留这份恰好。'}</p></div>
+        <ul className="colourway-cards">{copy.colorways.items.map((item, i) => <li key={item.id}><a className={'colourway-card colourway-'+i} href={localizedHref('/customize?preset='+item.id)}>
+          <div className="colourway-image"><span className="colourway-number">0{i+1}</span><img src={'/presets/'+item.id+'.webp'} alt={item.alt} width="360" height="270" loading="lazy" decoding="async"/></div>
+          <div className="colourway-content"><div className="colourway-swatches" aria-hidden="true">{[['#ecebe5','#3e9dbe'],['#273137','#eb5968'],['#365d52','#d5cbb6']][i].map(colour => <i key={colour} style={{background:colour}}/>)}</div><h3>{item.name}</h3><p>{item.description}</p><span className="colourway-action">{en ? 'Make it yours' : '用这款开始定制'}<ArrowUpRight size={17}/></span></div>
+        </a></li>)}</ul>
+        <div className="colourway-footnote"><span>{en ? 'Preset reference images. Your changes appear in the studio preview.' : '图片为预设参考；修改后的效果，请在定制工坊查看。'}</span><a href={localizedHref('/customize?preview=light')}>{en ? 'Slow connection? Use light preview' : '手机慢网？使用轻量预览'}<ChevronRight size={14}/></a></div>
+      </section>
 
-        <section id="colorways" className="sc-section sc-colorwaySection" aria-labelledby="colorway-title">
-          <div className="sc-sectionHeading">
-            <h2 id="colorway-title">{copy.colorways.title}</h2>
-            <p>{copy.colorways.intro}</p>
-          </div>
-          <ul className="sc-colorwayGrid">
-            {copy.colorways.items.map(item => (
-              <li key={item.id}>
-                <a className="sc-colorwayCard" href={`/customize?preset=${item.id}`}>
-                  <span className="sc-colorwayMedia">
-                    <img src={`/presets/${item.id}.webp`} alt={item.alt} width="360" height="270" loading="lazy" decoding="async" />
-                  </span>
-                  <span className="sc-colorwayCopy">
-                    <strong>{item.name}</strong>
-                    <span className="sc-colorwayText">{item.description}</span>
-                    <span className="sc-colorwayCta">{copy.colorways.choose} <ArrowUpRight size={15} /></span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-          <div className="sc-colorwayFooter">
-            <div className="sc-customEntryLinks"><a className="sc-textLink" href="/customize"><MessageSquare size={16} />{copy.colorways.freeform}</a><a className="sc-textLink" href="/customize?preview=light">{lang === 'zh' ? '手机慢网？轻量选款' : 'Lightweight preview'} <ChevronRight size={16}/></a></div>
-            <p>{copy.colorways.freeformNote}</p>
-          </div>
-          <p className="sc-presetNote">{copy.colorways.presetNote}</p>
-        </section>
+      <section id="details" className="landing-details" aria-labelledby="detail-title"><div className="shell detail-layout">
+        <div className="detail-image"><img src="/showcase/craft-detail-1086.webp" srcSet="/showcase/craft-detail-600.webp 600w, /showcase/craft-detail-1086.webp 1086w" sizes="(max-width: 900px) 100vw, 55vw" width="1086" height="1086" alt={copy.details.craftAlt} loading="lazy" decoding="async"/><span>{en ? 'TEXTURE / STITCH / EDGE' : '皮纹 / 缝线 / 封边'}</span></div>
+        <div className="detail-editorial"><p className="landing-kicker">02 — {en ? 'THE SMALL DETAILS' : '把细节留给自己'}</p><h2 id="detail-title">{en ? 'Not just a colour.\nA considered detail.' : '不止换个颜色，\n是每一处都合心意。'}</h2><p>{en ? 'Let a contrast edge define the shape. Pair the corners, tune the thread, or add a personal mark.' : '让一道撞色勾勒轮廓，让四个包角彼此呼应。\n从封边、缝线，到一枚自己的小小标记。'}</p>
+          <div className="detail-points"><span><b>06</b>{en ? 'Customizable parts' : '可定制部位'}</span><span><b>3D</b>{en ? 'Interactive preview' : '交互搭配预览'}</span><span><b>+ YOU</b>{en ? 'Images, text & drawing' : '图片、文字与手绘'}</span></div>
+          <a className="landing-cta light" href={studio}>{en ? 'Explore the details' : '进入工坊，试试搭配'}<ArrowUpRight size={18}/></a><small>{en ? 'Preview options express your preferences. Confirm materials and production with the maker.' : '预览用于表达设计喜好；材料供应与可制作工艺需由商家确认。'}</small>
+        </div>
+      </div></section>
 
-        <section id="customization" className="sc-section sc-customSection" aria-labelledby="custom-title">
-          <a href="/customize" className="sc-customPoster" aria-label={copy.poster.label}>
-            <img className="sc-customImage" src="/showcase/customize-collection-1672.webp" srcSet="/showcase/customize-collection-840.webp 840w, /showcase/customize-collection-1672.webp 1672w" sizes="(max-width: 600px) 150vw, (max-width: 1552px) 92vw, 1440px" width="1672" height="941" alt={copy.poster.imageAlt} loading="lazy" decoding="async" />
-            <div className="sc-customCopy">
-              <p className="sc-eyebrow">{copy.poster.eyebrow}</p>
-              <h2 id="custom-title"><Lines lines={copy.poster.title} /></h2>
-              <p className="sc-customDescription"><Lines lines={copy.poster.description} /></p>
-              <span className="sc-button sc-lightButton">{copy.poster.cta} <ArrowUpRight size={18} /></span>
-            </div>
-            <div className="sc-customFooter"><span>{copy.poster.footerLeft}</span><span>{copy.poster.footerRight} <ArrowUpRight size={17} /></span></div>
-          </a>
-          <p className="sc-customNote">{copy.poster.noteColors} <span>{copy.poster.noteText}</span></p>
-        </section>
-
-        <section id="product-info" className="sc-infoSection" aria-labelledby="info-title">
-          <div className="sc-section sc-infoInner">
-            <div className="sc-sectionHeading">
-              <h2 id="info-title">{copy.info.title}</h2>
-              <p><Lines lines={copy.info.intro} /></p>
-            </div>
-            <div className="sc-infoGrid">
-              <article className="sc-infoCard">
-                <h3>{copy.info.rangeTitle}</h3>
-                <ul>{copy.info.range.map(item => <li key={item}><Check size={15} />{item}</li>)}</ul>
-              </article>
-              <article className="sc-infoCard sc-infoConfirmed">
-                <h3>{copy.info.confirmedTitle}</h3>
-                <ul>{copy.info.confirmed.map(item => <li key={item}><Check size={15} />{item}</li>)}</ul>
-              </article>
-              <article className="sc-infoCard sc-infoPending">
-                <h3>{copy.info.pendingTitle}</h3>
-                <ul>{facts.pending.map(item => <li key={item}>{item}</li>)}</ul>
-              </article>
-              <article className="sc-infoCard">
-                <h3>{copy.info.careTitle}</h3>
-                <ul>{copy.info.care.map(item => <li key={item}>{item}</li>)}</ul>
-              </article>
-              {facts.confirmed.length > 0 && <article className="sc-infoCard sc-infoConfirmed">
-                <h3>{lang === 'zh' ? '产品规格与服务' : 'Product and service details'}</h3>
-                <ul>{facts.confirmed.map(item => <li key={item}><Check size={15}/>{item}</li>)}</ul>
-              </article>}
-            </div>
-          </div>
-        </section>
-
-        <section id="details" className="sc-detailsSection" aria-labelledby="details-title">
-          <div className="sc-section sc-detailInner">
-            <div className="sc-sectionHeading">
-              <h2 id="details-title">{copy.details.title}</h2>
-              <p><Lines lines={copy.details.intro} /></p>
-            </div>
-            <div className="sc-detailGrid">
-              <article className="sc-detailCard">
-                <div className="sc-detailMedia">
-                  <img className="sc-craftImage" src="/showcase/craft-detail-1086.webp" srcSet="/showcase/craft-detail-600.webp 600w, /showcase/craft-detail-1086.webp 1086w" sizes="(max-width: 600px) 90vw, 44vw" width="1086" height="1448" loading="lazy" decoding="async" alt={copy.details.craftAlt} />
-                </div>
-                <div className="sc-detailCopy">
-                  <p className="sc-cardLabel">{copy.details.craftLabel}</p>
-                  <h3>{copy.details.craftTitle}</h3>
-                  <p><Lines lines={copy.details.craftBody} /></p>
-                </div>
-              </article>
-              <article className="sc-detailCard">
-                <div className="sc-detailMedia">
-                  <img className="sc-sceneImage" src="/showcase/car-scene-941.webp" srcSet="/showcase/car-scene-600.webp 600w, /showcase/car-scene-941.webp 941w" sizes="(max-width: 600px) 90vw, 44vw" width="941" height="1672" loading="lazy" decoding="async" alt={copy.details.sceneAlt} />
-                  <span className="sc-sceneNote">{copy.details.sceneNote}</span>
-                </div>
-                <div className="sc-detailCopy">
-                  <p className="sc-cardLabel">{copy.details.sceneLabel}</p>
-                  <h3>{copy.details.sceneTitle}</h3>
-                  <p><Lines lines={copy.details.sceneBody} /></p>
-                </div>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        <section id="how-to-buy" className="sc-section sc-stepsSection" aria-labelledby="steps-title">
-          <div className="sc-sectionHeading">
-            <h2 id="steps-title">{copy.steps.title}</h2>
-            <p>{copy.steps.intro}</p>
-          </div>
-          <ol className="sc-stepGrid">
-            {copy.steps.items.map((item, index) => (
-              <li key={item.title}>
-                <span className="sc-stepNumber">{String(index + 1).padStart(2, '0')}</span>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </li>
-            ))}
-          </ol>
-          <p className="sc-stepNote">{copy.steps.note}</p>
-        </section>
-
-        <section id="faq" className="sc-section sc-faqSection" aria-labelledby="faq-title">
-          <div className="sc-sectionHeading">
-            <h2 id="faq-title">{copy.faq.title}</h2>
-            <p>{copy.faq.intro}</p>
-          </div>
-          <div className="sc-faqList">
-            {copy.faq.items.map(item => (
-              <details key={item.q}>
-                <summary>{item.q}<ChevronRight size={17} /></summary>
-                <p>{item.a}</p>
-              </details>
-            ))}
-          </div>
-        </section>
-
-        <section id="contact" className="sc-section sc-contactSection" aria-labelledby="contact-title">
-          <div className="sc-sectionHeading">
-            <h2 id="contact-title">{lang === 'zh' ? '聊聊你的定制方案。' : 'Discuss your custom design.'}</h2>
-            <p>{lang === 'zh' ? '电话或微信联系，确认后制作。' : 'Contact us by phone or WeChat to confirm the details.'}</p>
-          </div>
-          <ContactOptions lang={lang}/>
-        </section>
-
-        <section className="sc-closing" aria-labelledby="closing-title">
-          <p className="sc-eyebrow">{copy.closing.eyebrow}</p>
-          <h2 id="closing-title">{copy.closing.title}</h2>
-          <a className="sc-textLink" href="/customize">{copy.closing.cta} <ArrowUpRight size={18} /></a>
-        </section>
-      </main>
-      <footer className="sc-footer">
-        <span>{copy.footer.brand} <span className="sc-wordmark">{copy.footer.wordmark}</span> <a href="#contact">{lang === 'zh' ? '联系定制' : 'Contact'}</a></span>
-        <span className="sc-footerNotes"><span>{copy.footer.note}</span><span>{copy.languageNote}</span></span>
-      </footer>
-    </div>
-  );
+      <section id="how-to-buy" className="landing-section shell" aria-labelledby="steps-title">
+        <div className="landing-section-title"><div><p className="landing-kicker">03 — {en ? 'FROM IDEA TO ENQUIRY' : '从喜欢，到手边'}</p><h2 id="steps-title">{en ? 'A clear path to\nyour personal design.' : '定制不复杂，\n三步就清楚。'}</h2></div><p>{en ? 'Design here. Confirm with the maker.\nThis site does not take payments.' : '在这里完成搭配，与商家确认购买。\n本站不直接下单，也不在线收款。'}</p></div>
+        <ol className="workflow-cards">{steps.map(([title, body], i) => <li key={title}><span>0{i+1}</span><h3>{title}</h3><p>{body}</p></li>)}</ol>
+        <details className="landing-accordion technical-details"><summary>{en ? 'Customization, saving & product details' : '定制范围、保存方式与产品说明'}<span>+</span></summary><div className="technical-grid">{[[copy.info.rangeTitle, copy.info.range],[copy.info.confirmedTitle, copy.info.confirmed],[copy.info.pendingTitle,facts.pending],[copy.info.careTitle,copy.info.care]].map(([title, items]) => <article key={title as string}><h3>{title as string}</h3><ul>{(items as readonly string[]).map(item => <li key={item}>{item}</li>)}</ul></article>)}</div></details>
+        <div className="help-layout"><div><p className="landing-kicker">{en ? 'A FEW ANSWERS' : '你可能还想知道'}</p><h2>{en ? 'Before you decide.' : '放心选，问清楚。'}</h2><div className="landing-faq">{copy.faq.items.map(item => <details className="landing-accordion" key={item.q}><summary>{item.q}<span>+</span></summary><p>{item.a}</p></details>)}</div></div><section id="contact" className="landing-contact" aria-labelledby="contact-title"><p className="landing-kicker">{en ? 'TALK TO THE MAKER' : '联系商家'}</p><h2 id="contact-title">{en ? 'Let’s make it yours.' : '聊聊你的想法。'}</h2><p>{en ? 'Share your design, quantity and preferences. Confirm materials, a quote and timing before purchasing.' : '带上方案、数量与需求。\n确认好材料、报价和时间，再把喜欢带回家。'}</p><ContactOptions lang={lang}/></section></div>
+      </section>
+    </main>
+    <footer className="landing-footer"><div className="shell"><div><strong>{en ? 'DINGLI' : '鼎立车眷'}</strong><span>EVERYDAY, YOUR WAY.</span></div><p>{copy.footer.note}</p><a href={studio}>{en ? 'Create your design' : '开始我的定制'}<ArrowUpRight size={15}/></a></div></footer>
+  </div>;
 }

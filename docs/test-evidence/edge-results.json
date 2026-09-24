@@ -1,0 +1,39 @@
+{
+  "mode": "Embedded Chromium; original application code with simulated browser URL/storage boundary",
+  "passed": 8,
+  "total": 8,
+  "cases": [
+    {
+      "name": "Editable JSON actually downloads in Chromium",
+      "passed": true
+    },
+    {
+      "name": "JSON export preserves original schema and all six parts",
+      "passed": true
+    },
+    {
+      "name": "Old-format JSON roundtrip preserves independent corner",
+      "passed": true
+    },
+    {
+      "name": "Invalid JSON is rejected without changing draft",
+      "passed": true
+    },
+    {
+      "name": "Unsupported SVG upload rejected",
+      "passed": true
+    },
+    {
+      "name": "Unreadable image displays English error",
+      "passed": true
+    },
+    {
+      "name": "Changing the name after save enables saving again",
+      "passed": true
+    },
+    {
+      "name": "Studio chunk failure provides localized recovery",
+      "passed": true
+    }
+  ]
+}

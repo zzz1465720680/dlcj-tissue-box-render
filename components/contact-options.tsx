@@ -1,7 +1,7 @@
 'use client';
 
 import {useState} from 'react';
-import {ClipboardCopy, Phone} from 'lucide-react';
+import {ClipboardCopy, Phone} from './site-icons';
 import {activeContactChannels} from '@/lib/merchant-config';
 import {copyText} from '@/lib/clipboard';
 

@@ -1,0 +1,8 @@
+PASS Editable JSON actually downloads in Chromium
+PASS JSON export preserves original schema and all six parts
+PASS Old-format JSON roundtrip preserves independent corner
+PASS Invalid JSON is rejected without changing draft
+PASS Unsupported SVG upload rejected
+PASS Unreadable image displays English error
+PASS Changing the name after save enables saving again
+PASS Studio chunk failure provides localized recovery

@@ -9,7 +9,10 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1 --port 5174",
     "build": "tsc --noEmit && vite build",
-    "preview": "vite preview --host 127.0.0.1 --port 4174"
+    "preview": "vite preview --host 127.0.0.1 --port 4174",
+    "test": "node tests/logic.test.cjs",
+    "build:offline": "node tools/build-offline.cjs",
+    "preview:offline": "node tools/preview-static.cjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",

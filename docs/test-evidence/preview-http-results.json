@@ -1,0 +1,27 @@
+[
+  {
+    "name": "/",
+    "passed": true,
+    "status": 200
+  },
+  {
+    "name": "/customize?lang=en",
+    "passed": true,
+    "status": 200
+  },
+  {
+    "name": "/runtime/react.js",
+    "passed": true,
+    "status": 200
+  },
+  {
+    "name": "/models/revision7/tissuebox-r7.glb",
+    "passed": true,
+    "status": 200
+  },
+  {
+    "name": "/missing.js",
+    "passed": true,
+    "status": 404
+  }
+]

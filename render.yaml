@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: dingli-tissue-box
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./dist
+    autoDeployTrigger: off
+    renderSubdomainPolicy: enabled
+    routes:
+      - type: rewrite
+        source: /customize
+        destination: /index.html
+      - type: rewrite
+        source: /customize/
+        destination: /index.html
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin

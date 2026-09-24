@@ -1,52 +1,24 @@
-# 鼎立车眷 · Render 静态版
+# 鼎立车眷 · 车载纸巾盒网站备份
 
-面向不购买独立域名的部署方案。发布后由 Render 提供 `onrender.com` 网址，客户访问不依赖开发电脑开机。
+当前公开网站：https://dingli-tissue-box.netlify.app/
 
-## 已迁移
+本仓库保存当前静态网站的源码、图片、3D 模型、依赖锁定文件和 Netlify 路由规则。`backups/netlify-production-2026-09-24.zip` 是 2026-09-24 手动上传至 Netlify 的完整发布包副本；它与源码分开保存，便于按原样恢复。
 
-- 原有中英文首页、DC标志、推荐配色、电话13859235588及微信Zjw123098。
-- 原revision7模型和全部材质、配色、图案编辑、预设与轻量预览。
-- 本机草稿、多个本机方案、JSON导入导出、多角度PNG、询价文字及数量备注。
-- 原平台登录/云端保存已替换成本机方案库；客户无需登录。换设备时通过JSON文件转移方案。
+## 网站功能
 
-这是独立副本，不包含原平台的登录接口、R2绑定和站点凭据。原站点仍在原目录中。
+- 中英文展示首页、推荐配色、DC 标志及商家电话和微信。
+- revision7 3D 模型、材质和颜色编辑、图案、预设与轻量预览。
+- 本机草稿和方案库、JSON 导入导出、多角度 PNG、询价文字、数量和备注。
+- 客户无需登录；方案保存在各自浏览器中，换设备时可通过 JSON 文件转移。
 
-## 本地检查
+## 恢复网站
 
-```text
-npm ci
-npm run build
-npm run preview
-```
+**按原样恢复：**解压 `backups/netlify-production-2026-09-24.zip`，将解压后的全部文件（包括 `_redirects`）上传至 Netlify 站点的 Production deploys。发布包的 SHA-256 为 `A735ABF03679A54FF62208B6870D751E843CE98BB5F921D3DB080AD1A0A77295`。
 
-预览地址为 `http://127.0.0.1:4174/`，入口：`/`、`/customize`、`/customize?preview=light`。
+**从源码重新构建：**在项目根目录运行 `npm ci` 和 `npm run build`，然后上传生成的 `dist` 目录内容。`public/_redirects` 会随构建进入 `dist`，让 `/customize` 页面在直接打开或刷新时正常显示。需要 Node.js 22.13 或更新版本。
 
-## Render发布配置
+这个 Netlify 站点目前由人工上传发布，**没有连接 GitHub 自动部署**。更新仓库不会自动更新线上网页。详细记录见 [NETLIFY_DEPLOYMENT.md](NETLIFY_DEPLOYMENT.md)。
 
-使用 Static Site（静态网站）服务：
+## 备份范围
 
-- Build Command：`npm ci && npm run build`
-- Publish Directory：`dist`
-- Rewrite：`/customize` 和 `/customize/` → `/index.html`
-- 使用平台自带 `onrender.com` 域名，无需购买独立域名。
-- `render.yaml` 已包含这些配置和基础响应头。
-
-Render官方要求关联Git仓库。部署时可使用现有GitHub仓库的独立分支，不要覆盖原网站的主分支。只有实际创建站点并成功发布后，才能确定分配的网址；本文件不声明已经取得网址。
-
-## 免费额度与使用边界
-
-按2026-09-24官方文档，Hobby工作区包含每月5GB出站流量；静态托管本身免费，但总流量受额度约束。不要启用付费升级或自动产生额外账单的配置。18.2MB模型首次下载也计入流量。额度与政策以Render控制台为准。
-
-用户已反馈手机关闭代理后能访问Render官方测试页；仍需在最终分配的网址上复测微信、手机流量/Wi-Fi和资源加载。
-
-## 验证记录
-
-- Vite升级到8.0.16，修复已报告的旧开发服务器漏洞；当前npm audit报告0个漏洞。
-- TypeScript检查与生产构建通过。
-- 真实浏览器：从首页选择森林配色进入工坊，3D正常显示；保存到本机成功；改为雾蓝后从本机方案库重新打开，恢复为`#365d52`。
-- 公开JPEG副本移除了EXIF/IPTC/注释元数据；与原文件解码后的像素完全相同，未改变视觉内容。此副本中的pattern.jpg不含GPS。
-- revision7 GLB与原网站的SHA-256一致，无减面或重建。
-
-## 待完成
-
-Render账号注册/登录、关联部署分支、实际发布、最终网址在手机微信中的验证。尚未发布为Render线上网站。
+仓库和发布包只包含网站及其公开资源，不包含访客浏览器中的草稿或方案、Netlify 账号设置、原平台登录接口、R2 存储数据和站点凭据。`render.yaml` 保留为另一种静态托管配置；目前的公开网址使用 Netlify。
